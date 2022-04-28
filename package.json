@@ -1,0 +1,19 @@
+{
+  "name": "du-proj-social-network-api",
+  "version": "1.0.0",
+  "description": "Social Media API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anon123123123/du-proj-social-network-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anon123123123/du-proj-social-network-api/issues"
+  },
+  "homepage": "https://github.com/anon123123123/du-proj-social-network-api#readme"
+}
