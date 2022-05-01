@@ -15,17 +15,23 @@ const usersSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      match: /.+\@.+\..+/, // TEST This
+      match: /.+\@.+\..+/,
       max_length: 50,
     },
     thoughts: [thoughtsSchema],
+    friends: [{type: Schema.Types.ObjectId, ref: 'friend'}],
   },
   {
     toJSON: {
       getters: true,
+      virtuals: true
     },
   }
 );
+
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+})
 
 const Users = model('users', usersSchema);
 
