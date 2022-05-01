@@ -1,8 +1,8 @@
 const { Schema, model } = require('mongoose');
-const thoughtsSchema = require('./Thoughts');
+const thoughtsSchema = require('./Thought');
 // To do add thoughts schema and fix below to be in line with read me add friends arrary
 // Schema to create Student model
-const usersSchema = new Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -18,7 +18,7 @@ const usersSchema = new Schema(
       match: /.+\@.+\..+/,
       max_length: 50,
     },
-    thoughts: [thoughtsSchema],
+    // thoughts: [thoughtsSchema],
     friends: [{type: Schema.Types.ObjectId, ref: 'friend'}],
   },
   {
@@ -33,6 +33,6 @@ userSchema.virtual('friendCount').get(function () {
   return this.friends.length;
 })
 
-const Users = model('users', usersSchema);
+const Users = model('users', userSchema);
 
 module.exports = Users;
