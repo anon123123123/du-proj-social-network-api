@@ -1,14 +1,14 @@
 const router = require('express').Router();
-// const { To do - fix
-//   getUsers,
-//   getSingleUser,
-//   createUser,
-// } = require('../../controllers/userController');
+const {
+  getThoughts,
+  getSingleThought,
+  createThought,
+} = require('../../controllers/thoughtController');
 
-// // /api/users
-// router.route('/').get(getUsers).post(createUser);
+// /api/users
+router.route('/').get(getThoughts).post(createThought);
 
-// // /api/users/:userId
-// router.route('/:userId').get(getSingleUser);
+// /api/users/:userId
+router.route('/:userId').get(getSingleThought)
 
 module.exports = router;
