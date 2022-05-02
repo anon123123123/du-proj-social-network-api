@@ -27,7 +27,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // To do - fix update by ID
+  // update by ID
   updateSingleUser(req, res) {
     User.updateOne({ _id: req.params.userId })
       .select('-__v')
@@ -39,7 +39,7 @@ module.exports = {
       .catch((err) => res.status(500).json(err));
   },
 
-  // Delete user TO DO - fix?
+  // Delete user 
   deleteSingleUser(req, res) {
     User.findOneAndRemove({ _id: req.params.userId })
       .select('-__v')
@@ -50,6 +50,21 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $addToSet: { friends: req.body } },
+      { runValidators: true, new: true }
+    )
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: 'No user with this id!' })
+          : res.json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+  
 
 
 };
