@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose');
-const thoughtsSchema = require('./Thought');
+const thoughtsSchema = require('./Thought').schema;
 // To do add thoughts schema and fix below to be in line with read me add friends arrary
 // Schema to create Student model
 const userSchema = new Schema(
@@ -18,7 +18,7 @@ const userSchema = new Schema(
       match: /.+\@.+\..+/,
       max_length: 50,
     },
-    // thoughts: [thoughtsSchema],
+    thoughts: [thoughtsSchema],
     // TO DO fix 
      friends: {type: Array, ref: 'User'},
     //friends: {type: Schema.Types.ObjectId, ref: 'User'}
