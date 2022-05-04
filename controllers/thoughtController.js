@@ -29,19 +29,20 @@ module.exports = {
 
   // update by ID
   updateSingleThought(req, res) {
-    Thoughts.updateOne({ _id: req.params.thoughtId })
-      .select('-__v')
+    Thoughts.findOneAndUpdate({ _id: req.params.thoughtId },
+      { $set: req.body },
+      { runValidators: true, new: true })
       .then((thoughts) =>
         !thoughts
           ? res.status(404).json({ message: 'No Thought with that ID' })
-          : res.json(thought)
+          : res.json(thoughts)
       )
       .catch((err) => res.status(500).json(err));
   },
 
   // Delete Thought 
   deleteSingleThought(req, res) {
-    Thoughts.findOneAndRemove({ _id: req.params.ThoughtId })
+    Thoughts.findOneAndRemove({ _id: req.params.thoughtId })
       .select('-__v')
       .then((thought) =>
         !thought

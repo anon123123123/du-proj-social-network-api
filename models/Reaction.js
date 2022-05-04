@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 // To do all
 // Schema to create Thought model
-const reactionsSchema = new Schema(
+const reactionSchema = new Schema(
   {
     reactionId: {
       type: Schema.Types.ObjectId,
@@ -21,7 +21,6 @@ const reactionsSchema = new Schema(
       type: Date,
       default: Date.now,
     },
-    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -31,10 +30,7 @@ const reactionsSchema = new Schema(
   }
 );
 
-userSchema.virtual('reactionCount').get(function () {
-  return this.reactions.length;
-})
 
-const Thoughts = model('thoughts', thoughtsSchema);
+const Reaction = model('reactions', reactionSchema);
 
-module.exports = Thoughts;
+module.exports = Reaction;
